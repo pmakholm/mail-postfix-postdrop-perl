@@ -1,0 +1,17 @@
+--- #YAML:1.0
+name:                Mail-Postfix-Postdrop
+version:             0.1
+abstract:            Inject mails to a Postfix maildrop directory
+license:             ~
+author:              
+    - Peter Makholm <makholm@one.com>
+generated_by:        ExtUtils::MakeMaker version 6.42
+distribution_type:   module
+requires:     
+    Email::Abstract:               0
+    Email::Address:                0
+    File::Temp:                    0
+    Test::More:                    0
+meta-spec:
+    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
+    version: 1.3

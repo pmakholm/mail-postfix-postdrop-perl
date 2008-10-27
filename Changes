@@ -1,5 +1,10 @@
 Revision history for Mail-Postfix-Postdrop
 
+0.2     2008-10-27
+        Add an example script
+        Add versioned PREREQ_PM on Exporter for an exportable import() method
+        Add license tag to META.yaml
+
 0.1     2008-10-22
         First version, released on an unsuspecting world.
 

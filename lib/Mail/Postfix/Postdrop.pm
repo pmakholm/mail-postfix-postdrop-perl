@@ -1,10 +1,10 @@
-# $Id: Postdrop.pm 2351 2008-10-22 08:50:55Z makholm $
+# $Id: Postdrop.pm 2376 2008-10-27 09:36:02Z makholm $
 package Mail::Postfix::Postdrop;
 
 use strict;
 use warnings;
 
-our $VERSION = '0.1';
+our $VERSION = '0.2';
 
 use Carp;
 use Exporter qw(import);

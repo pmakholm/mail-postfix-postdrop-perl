@@ -70,7 +70,8 @@ sub new {
     # an object taht allready is an Email::Abstract. So this is ok:
     $message = Email::Abstract->new($message);
 
-    $overrides{Attr} ||= { rewrite_context => 'local' };
+    $overrides{Attr}      ||= { rewrite_context => 'local' };
+    $overrides{Timestamp}   = time() unless exists $overrides{Timestamp};
 
     unless ( exists $overrides{Sender} ) {
         my $sender = $message->get_header("Sender");
@@ -215,7 +216,9 @@ sub _build_rec_size {
 sub _build_rec_time {
     my ( $self, $time ) = @_;
 
-    $time = time() unless ( defined($time) );
+    $time = $self->{args}->{Timestamp} unless ( defined($time) );
+
+    return unless defined $time;
 
     my $s = sprintf( "%d", $time );
     $self->_build_rec( 'REC_TYPE_TIME', $s );
@@ -308,6 +311,12 @@ Default: content of To, CC, and BCc headers.
 Attributes to further posfix processing. Default:
 
   { rewrite_context => 'local' }
+
+=head3 Timestamp (integer or undef)
+
+Timestamp to stamp the queue file with (posix timestamp). The default is the
+current time. If timestamp is explicitly set to undef no timestamp will be
+created. This is needed for sending through postdrop(1).
                                              
 =head1 METHODS
 
